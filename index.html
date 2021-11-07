@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <title>API Fun</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+
+    <div id="weather"></div>
+
+    <script>
+        const xmlhttp = new XMLHttpRequest();
+        var data = "";
+
+
+        xmlhttp.onload = function () {
+            data = JSON.parse(this.responseText);
+            const myJSON = JSON.stringify(data);
+            document.getElementById("weather").innerHTML = myJSON + "<p>";
+            document.getElementById("info").innerHTML += "API Details: " + "<br>";
+            document.getElementById("info").innerHTML += "I selected the 7Timer! API which is a series of web-based meteorological forecast products." + "<br>";
+            document.getElementById("info").innerHTML += "Website: http://www.7timer.info/bin/api.pl?lon=113.17&lat=23.09&product=astro&output=json" + "<br>";
+            document.getElementById("info").innerHTML += "I checked all keys in the query parameter and requested for the data in JSON format. The data is a set of weather metrics such as direction, cloud cover, and temperature." + "<br>";
+            document.getElementById("info").innerHTML += "Applications in weather forecasting, astronomy and meteorology." + "<br>";
+        }
+
+
+        xmlhttp.open("GET", "http://www.7timer.info/bin/api.pl?lon=113.17&lat=23.09&product=astro&output=json", true);
+        xmlhttp.send();
+
+
+    </script>
+
+    <div id="info"></div>
+
+</body>
+
+</html>
